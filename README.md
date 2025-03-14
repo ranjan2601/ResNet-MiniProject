@@ -8,21 +8,10 @@ This repository contains a deep learning project to train a lightweight ResNet m
 - **Model**: A custom `ResNetSmall` architecture based on ResNet with `BasicBlock`, designed to have fewer than 5 million parameters (approximately 2.74M parameters)
 - **Goal**: Train an efficient model with high accuracy on CIFAR-10, then optimize it for better generalization and performance
 
-### Phases
-1. **Initial Training**:
-   - Trained `ResNetSmall` for 100 epochs with SGD, momentum, and a multi-step learning rate scheduler
-   - Used standard data augmentation (random crop, horizontal flip, normalization)
-   - Saved the best model based on test accuracy
-
-2. **Optimization**:
-   - **Cosine Annealing Scheduler**: Replaced the multi-step scheduler with `CosineAnnealingLR` for smoother learning rate decay
-   - **Mixup**: Applied Mixup augmentation to blend training samples and labels, improving robustness
-   - **Test-Time Augmentation (TTA)**: Generated predictions by averaging outputs over multiple augmented test samples
-
 ## Model Details
 
 - **Architecture**: `ResNetSmall` with `BasicBlock` (4 layers: [4, 4, 4, 3] blocks)
-- **Parameter Count**: ~2.74M trainable parameters (verified using `torchinfo`)
+- **Parameter Count**: ~4.74M trainable parameters (verified using `torchinfo`)
 - **Input**: 32x32 RGB images (3 channels)
 - **Output**: 10-class softmax probabilities
 
@@ -32,26 +21,26 @@ This repository contains a deep learning project to train a lightweight ResNet m
 - PyTorch 1.9+ (`torch`, `torchvision`)
 - Additional libraries: `torchinfo`, `numpy`, `matplotlib`
 
-# Implementation Details
+## Training and Optimization Phases
 
-## Initial Training
+### Initial Training
 - **Optimizer:** SGD (lr=0.1, momentum=0.9, weight_decay=5e-4)
 - **Scheduler:** MultiStepLR (milestones=[50, 75], gamma=0.1)
 - **Loss:** Cross-Entropy Loss
 - **Epochs:** 100
 - **Data Augmentation:** Random crop, horizontal flip, normalization
+- **Model Saving:** Best model based on test accuracy was saved
 
-## Optimization
-
-### Cosine Annealing Scheduler
+### Optimization
+#### Cosine Annealing Scheduler
 - Replaced MultiStepLR with `CosineAnnealingLR(T_max=100)` for smoother learning rate decay
 - Fine-tuned for 30 additional epochs with `lr=0.001`
 
-### Mixup
+#### Mixup
 - Added Mixup augmentation (`alpha=0.2`) to the training loop
 - Applied during training to mix inputs and targets
 
-### Test-Time Augmentation (TTA)
+#### Test-Time Augmentation (TTA)
 - Generated predictions by averaging over multiple augmented versions of test images
 
 ## Results
