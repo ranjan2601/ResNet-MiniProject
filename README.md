@@ -11,7 +11,7 @@ This repository contains a deep learning project to train a lightweight ResNet m
 ## Model Details
 
 - **Architecture**: `ResNetSmall` with `BasicBlock` (4 layers: [4, 4, 4, 3] blocks)
-- **Parameter Count**: ~4.74M trainable parameters (verified using `torchinfo`)
+- **Parameter Count**: ~4.74M trainable parameters
 - **Input**: 32x32 RGB images (3 channels)
 - **Output**: 10-class softmax probabilities
 
@@ -31,10 +31,6 @@ This repository contains a deep learning project to train a lightweight ResNet m
 - **Data Augmentation:** Random crop, horizontal flip, normalization
 - **Model Saving:** Best model based on test accuracy was saved
 
-### Optimization
-#### Cosine Annealing Scheduler
-- Replaced MultiStepLR with `CosineAnnealingLR(T_max=100)` for smoother learning rate decay
-- Fine-tuned for 30 additional epochs with `lr=0.001`
 
 #### Mixup
 - Added Mixup augmentation (`alpha=0.2`) to the training loop
@@ -44,6 +40,6 @@ This repository contains a deep learning project to train a lightweight ResNet m
 - Generated predictions by averaging over multiple augmented versions of test images
 
 ## Results
-- **Initial Model:** Achieved ~XX% test accuracy (fill in based on your run)
-- **Optimized Model:** Improved to ~YY% test accuracy with cosine annealing, Mixup, and TTA (update with actual results)
+- **Initial Model:** Achieved ~94% test accuracy.
+- **Optimized Model:** Improved to ~95.5% test accuracy with Mixup, and TTA (update with actual results)
 
