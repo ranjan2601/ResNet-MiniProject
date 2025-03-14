@@ -5,7 +5,7 @@ This repository contains a deep learning project to train a lightweight ResNet m
 ## Project Overview
 
 - **Dataset**: CIFAR-10 (10 classes, 50,000 training images, 10,000 test images, 32x32 RGB)
-- **Model**: A custom `ResNetSmall` architecture based on ResNet with `BasicBlock`, designed to have fewer than 5 million parameters (approximately 2.74M parameters)
+- **Model**: A custom `ResNetSmall` architecture based on ResNet with `BasicBlock`, designed to have fewer than 5 million parameters
 - **Goal**: Train an efficient model with high accuracy on CIFAR-10, then optimize it for better generalization and performance
 
 ## Model Details
@@ -41,5 +41,5 @@ This repository contains a deep learning project to train a lightweight ResNet m
 
 ## Results
 - **Initial Model:** Achieved ~94% test accuracy.
-- **Optimized Model:** Improved to ~95.5% test accuracy with Mixup, and TTA (update with actual results)
+- **Optimized Model:** Improved to ~95.5% test accuracy with Mixup, and TTA by setting epochs to 200.
 
